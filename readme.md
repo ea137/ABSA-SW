@@ -24,61 +24,52 @@ EXAMPLE:
 1. Run install.sh to download the library requirements
 2. Create a folder and name it ./boom
 3. Add the ABSA 15 dataset to the folder
-4. Follow the steps below
+4. Follow the steps below:
 
-Add following block to Second.py and delete it after running
+    ### Add following block to Second.py and delete it after running (Training BERT on 4 epochs)
 ```
-
 path = "./boom/ABSA-15_Restaurants_Train_Final.xml"
 finds = ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
 pot = ModelOne(path,finds,epochs=4, train_num=1654)
 pot.baseFormTraining()
 pot.saveModel("./boom/absa15BERT")
-
 ```
 
-Add following block to First.py and delete it after running
-<code>
-
+   ### Add following block to First.py and delete it after running (Getting training and testing data using previously trained BERT model)
+```
 path = "boom/ABSA-15_Restaurants_Train_Final.xml"  # TO CHANGE
 pot = DataForms(path, finds= ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
 ,saved_model = "./boom/absa15BERT" ,test=True)
 pot.LSTMInputForm()
 pot.saveForm("./boom/X","./boom/y")
+```
 
-</code>
+   ### Add following block to First.py and delete it after running (Getting training and testing data using previously trained BERT model)
 
-Then
-
-<code>
-
+```
 path = "boom/ABSA-15_Restaurants_Train_Final.xml"  # TO CHANGE
 pot = DataForms(path, finds= ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
 ,saved_model = "./boom/absa15BERT" ,test=False)
 pot.LSTMInputForm()
 pot.saveForm("./boom/X","./boom/y")
+```
 
-</code>
+   ### Add following block to First.py and delete it after running (Reducing training and testing data)
 
-Add following block to First.py and delete it after running
-<code>
-
+```
 path = "boom/ABSA-15_Restaurants_Train_Final.xml"  # TO CHANGE
 pot = DataForms(path, finds= ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
 ,saved_model = "./boom/absa15BERT" )
 pot.ReduceLSTMPCA("./boom/X False.pkl","./boom/X True.pkl")
+```
 
-</code>
-
-Add following block to Third.py and delete it after running
-<code>
-
+   ### Add following block to Third.py and delete it after running (training LSTM block model on previously reduced data)
+```
 pot = ModelTwo("./boom/X False_reduced.pkl","./boom/X True_reduced.pkl","./boom/y False.pkl","./boom/y True.pkl"
 ,train_perc=.9,epochs=7,batch_size = 32)
 pot.upperFormTraining()
 pot.saveModel("./boom/Final_model.h5")
-
-</code>
+```
 
 
 
