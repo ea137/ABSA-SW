@@ -9,6 +9,8 @@ ______________________________
 
 
 for ABSA 15 and 16 set finds to ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
+
+
 for ABSA 14 set finds to ['./sentence','./aspectTerms/aspectTerm','term']
 
 ______________________________
