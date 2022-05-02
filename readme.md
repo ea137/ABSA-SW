@@ -27,7 +27,7 @@ EXAMPLE:
 4. Follow the steps below
 
 Add following block to Second.py and delete it after running
-<code>
+```
 
 path = "./boom/ABSA-15_Restaurants_Train_Final.xml"
 finds = ["./Review/sentences/sentence",'./Opinions/Opinion',"target"]
@@ -35,7 +35,7 @@ pot = ModelOne(path,finds,epochs=4, train_num=1654)
 pot.baseFormTraining()
 pot.saveModel("./boom/absa15BERT")
 
-</code>
+```
 
 Add following block to First.py and delete it after running
 <code>
